@@ -18,12 +18,17 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-Application is based on Marine data provided by kkkAPPSILON.\
+Application is based on Marine data provided by APPSILON.\
+\
+**shiny.semantic** package, developed by APPSILON team, is used for the application and the
+tests are conducted by **testthat** package.\
+\
 There are two dropdown fields on SIDEBAR. Users can select ship type and name by using these fields.\
+\
 There are 3 tabs on MAIN PANEL;\
 1. On "Map" tab: Users can see information about a selected ship's longest move.  
 2. On "Statistics" tab: Users can see summary statistics for average distance and average speed.  
-3. On "Graphs" tab: Users can see the fastest 5 ships in selected ship type
+3. On "Graphs" tab: Users can see the fastest 5 ships for selected ship type.
 
 
 ## Downloading Package
@@ -32,7 +37,7 @@ Latest version of the application can be downloaded from [Github](https://github
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("gokhankocturk/gklfs")
+devtools::install_github("gokhankocturk/marinedatashiny")
 ```
 ## Data Description
 
