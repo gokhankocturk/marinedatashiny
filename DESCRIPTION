@@ -1,0 +1,37 @@
+Package: marinedatashiny
+Title: Marine Data Statistics Graphs
+Version: 0.0.0.9001
+Authors@R: 
+    person(given = "Gokhan",
+           family = "KOCTURK",
+           role = c("aut", "cre"),
+           email = "gokhankocturk7@gmail.com",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: Application is based on Marine data provided by APPSILON. Users can select ship type and name
+    from dropdown lists. 
+    On "Map" tab: Users can see information about a selected ship's longest move. 
+    On "Statistics" tab: Users can see summary statistics for average distance and average speed.
+    On "Graphs" tab: Users can see the fastest 5 ships in selected ship type
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports:
+    data.table,
+    dplyr,
+    forcats,
+    geosphere,
+    ggplot2,
+    leaflet,
+    lubridate,
+    readr,
+    shiny,
+    shiny.semantic,
+    shinydashboard,
+    semantic.dashboard
+Depends: 
+    R (>= 2.10)
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
