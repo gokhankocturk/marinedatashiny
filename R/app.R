@@ -10,9 +10,9 @@
 
 marineshinyapp <- function(...) {
 
-  ############################################################################
+  #############################################################################
   # Defining CSS for ship_text and shipname_text outputs.
-  ############################################################################
+  #############################################################################
   CSS <- "
   #ship_text {color:#96CDCD; font-weight: 900; font-size:24px; font-family:papyrus; text-align:center; border-bottom: 2px solid teal;}
   #shipname_text {color:#FF7F50; font-weight: bold; font-size:24px; font-family:papyrus; text-align:center; border-bottom: 2px solid #8B3E2F;}
