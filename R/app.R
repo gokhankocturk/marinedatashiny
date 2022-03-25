@@ -21,8 +21,8 @@ marineshinyapp <- function(...) {
   ############################################################################
   # Defining layout for app
   ############################################################################
-  sidebar <- sidebar_layout(
-    sidebar_panel(
+  sidebar <- shiny.semantic::sidebar_layout(
+    shiny.semantic::sidebar_panel(
       width = 3,
       div(
         style = "position: relative; height: 500px",
@@ -112,9 +112,10 @@ marineshinyapp <- function(...) {
     # One for starting point, one for ending point.
     data_final <- eventReactive(getdata$namesend(), {
       data_draft <- getdata$datasend() %>%
+        arrange(DATETIME) %>%
         filter(ship_type == getdata$typesend() & SHIPNAME == getdata$namesend()) %>%
         mutate(id = row_number(), distance = distHaversine(cbind(LON, LAT),
-                                                           cbind(lag(LON), lag(LAT))))
+                                                           cbind(lead(LON, 1), lead(LAT, 1))))
 
       data_draft <- data_draft %>% relocate(id)
 
