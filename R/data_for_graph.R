@@ -4,7 +4,9 @@ data_for_graph <- function(data, type) {
     data_draft <- data_draft %>%
       filter(ship_type == {{type}}, is_parked == 0) %>%
       group_by(SHIPNAME) %>%
-      summarize(avg_speed = mean(SPEED)) %>%
+      summarize(avg_speed = mean(SPEED))
+
+    data_draft <- data_draft %>%
       arrange(desc(avg_speed)) %>%
       top_n(5)
 

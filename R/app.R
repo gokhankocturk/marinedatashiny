@@ -14,13 +14,14 @@ marineshinyapp <- function(...) {
   # Defining CSS for ship_text and shipname_text outputs.
   #############################################################################
   CSS <- "
-  #ship_text {color:#96CDCD; font-weight: 900; font-size:24px; font-family:papyrus; text-align:center; border-bottom: 2px solid teal;}
-  #shipname_text {color:#FF7F50; font-weight: bold; font-size:24px; font-family:papyrus; text-align:center; border-bottom: 2px solid #8B3E2F;}
+  #ship_text {color:white; background-color: #00CCCC; font-weight: 900; font-size:24px; text-align:center; border-bottom: 2px solid teal;}
+  #shipname_text {color:white; background-color: #FF7F50; font-weight: bold; font-size:24px; text-align:center; border-bottom: 2px solid #8B3E2F;}
   "
 
   ############################################################################
   # Defining layout for app
   ############################################################################
+
   sidebar <- shiny.semantic::sidebar_layout(
     shiny.semantic::sidebar_panel(
       width = 3,
@@ -35,8 +36,10 @@ marineshinyapp <- function(...) {
               div(class = "content",
                   style = "background-color:lightblue; border-bottom: 2px solid red;",
                   div(class = "header", "Gokhan KOCTURK"),
+                  br(),
                   div(class = "meta", "R / Shiny Developer"),
-                  div(class = "description", "South America Team")
+                  br(),
+                  div(class = "description", "Appsilon")
               )
             )
           )
@@ -44,14 +47,14 @@ marineshinyapp <- function(...) {
       )
     ),
 
-    main_panel(
+    shiny.semantic::main_panel(
       width = 9,
       tabset(
         tabs = list(
           list(
             menu = "1. Map",
             content = list(
-              h2("Longest Distance Between Two Consecutive Moves", style = "color: #2F4F4F; text-shadow: 2px 2px 4px black; border-bottom: 2px solid red; font-family:Avant Garde; text-align: center;"),
+              h2("Longest Distance Between Two Consecutive Moves", style = "color: white; background-color: #3198C4; border-bottom: 2px solid red; text-align: center;"),
               leafletOutput("map")
             ),
             id = "first_tab"
@@ -63,19 +66,19 @@ marineshinyapp <- function(...) {
                 segment(
                   textOutput("ship_text"),
                   br(),
-                  br(),
+
                   semantic.dashboard::infoBoxOutput("ship1"),
                   br(),
-                  br(),
+
                   semantic.dashboard::infoBoxOutput("ship2")
                 ),
                 segment(
                   textOutput("shipname_text"),
                   br(),
-                  br(),
+
                   semantic.dashboard::infoBoxOutput("shipname1"),
                   br(),
-                  br(),
+
                   semantic.dashboard::infoBoxOutput("shipname2")
                 )
               )
@@ -89,7 +92,8 @@ marineshinyapp <- function(...) {
             )
           )
         ),
-        active = "third_tab"
+        active = "third_tab",
+        menu_class = "top attached red"
       )
     )
   )
@@ -97,10 +101,12 @@ marineshinyapp <- function(...) {
   ############################################################################
   # Defining UI
   ############################################################################
-  ui <- semanticPage(tags$style(CSS),
-                     theme = "readable",
-                     h2("APPSILON", br(), "(Assignment - Marine Data)", style = "color: white; text-shadow: 1px 1px 2px black; font-family: Avant Garde; background-color: #4169E1;  border-bottom: 2px solid red; position: relative; width: 1500px; text-align: center;"),
+  ui <- semanticPage(
+                     tags$style(CSS),
+                     theme = "paper",
+                     h2("APPSILON", br(), icon("red circular ship"), "(Assignment - Marine Data)",  icon("red circular ship"), style = "color: white; text-shadow: 1px 1px 2px black; background-color: #4169E1;  border-bottom: 2px solid red; position: relative; width: 1500px; text-align: center;"),
                      sidebar)
+
 
   ############################################################################
   # Defining main SERVER

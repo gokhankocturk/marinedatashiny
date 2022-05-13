@@ -13,10 +13,12 @@ selectUI <- function(id) {
   tagList(
     segment(
       style = "border-bottom: 2px solid red; background-color: lightblue; color: #828282; text-align: center;",
-      h3("Ship Type & Name Selection"),
+      h3("Ship Type & Name Selection", style = "color:black; font-weight: bold;"),
+      br(),
       width = 12,
-      shiny.semantic::selectInput(ns("vessel_type"), "Select vessel type:", choices = sort(unique(ships$ship_type))),
-      shiny.semantic::selectInput(ns("vessel_name"), "Select a vessel: ", choices = sort(unique(ships$SHIPNAME)))
+      div(shiny::selectInput(ns("vessel_type"), "Select vessel type:", choices = sort(unique(ships$ship_type))), style = "color: white; background-color: #3198C4;"),
+      br(),
+      div(shiny::selectInput(ns("vessel_name"), "Select a vessel: ", choices = sort(unique(ships$SHIPNAME))), style = "color: white; background-color: #3198C4;")
     )
   )
 }
@@ -32,7 +34,7 @@ selectSERVER <- function(id) {
                    ships %>%
                      filter(ship_type == input$vessel_type) %>%
                      mutate(distance = distHaversine(cbind(LON, LAT),
-                                                     cbind(lag(LON), lag(LAT))))
+                                                     cbind(lead(LON, 1), lead(LAT, 1))))
                  }
                  )
 

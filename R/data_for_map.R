@@ -4,7 +4,7 @@ data_for_map <- function(data, type, name) {
     data_draft <- data_draft %>%
       filter(ship_type == {{type}}, SHIPNAME == {{name}}) %>%
       mutate(distance = distHaversine(cbind(LON, LAT),
-                                      cbind(lag(LON), lag(LAT))),
+                                      cbind(lead(LON, 1), lag(LAT, 1))),
              id = row_number())
 
     data_top <- data_draft %>% filter(distance == max(distance, na.rm = TRUE))
